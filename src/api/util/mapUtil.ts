@@ -1,4 +1,4 @@
-import { Coordinates, MapDimensions } from "../models/MapDimensions";
+import { Coordinates, MapDimensions } from "../models/interfaces/MapDimensions";
 
 export const pointArrToCoordinates = (pointArray: number[]) => {
     return <Coordinates> {x: pointArray[0], y: pointArray[1]};

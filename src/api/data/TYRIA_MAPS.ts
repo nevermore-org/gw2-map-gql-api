@@ -1,4 +1,4 @@
-import MapInfo from "../models/MapInfo";
+import MapInfo from "../models/interfaces/MapInfo";
 
 // last cached 13/12/2021
 const TYRIA_MAPS: MapInfo[] = [

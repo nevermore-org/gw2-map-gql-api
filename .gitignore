@@ -147,3 +147,5 @@ output/tiles/*
 tiles/*
 
 old.ts
+
+.env
