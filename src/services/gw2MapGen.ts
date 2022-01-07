@@ -3,7 +3,6 @@ import TYRIA_MAPS from "../data/TYRIA_MAPS";
 import { MapDimensions } from "../models/interfaces/MapDimensions";
 import MapInfo from "../models/interfaces/MapInfo";
 import { mapDimensionsFromPoints } from "../util/mapUtil";
-import fs from 'fs';
 import { GW_API_URL } from "../data/GW_API_URL";
 
 export default class gw2MapGen {
@@ -26,9 +25,9 @@ export default class gw2MapGen {
      * return Image object of a given tile
      * can get the image either from saved tiles, or from the GW2 API directly
      */ 
-    private getTile = async (x: number, y: number, silent: boolean = true, fromAPI: boolean = true) => {
+    private getTile = async (x: number, y: number, silent: boolean = true, fromAPI: boolean = false) => {
         if(!silent) {
-            console.log(`Getting the tile with coors: X: ${x} Y: ${y}`)
+            console.log(`Getting the tile with coors: X: ${x} Y: ${y}`);
         };
         
         const tileSource = fromAPI ? `${GW_API_URL.TILES}/${x}/${y}.jpg` : `./tiles/1/1/7/${x}/${y}.jpg`;
@@ -63,7 +62,7 @@ export default class gw2MapGen {
                 let cropRectWidth = this.tileSize - (UPLCropX - absTileX);
                 
                 // input for this are the relative (X,Y) coordinates of the tile
-                const tile = await this.getTile(relULTileX + offsetX, relULTileY + offsetY, false);
+                const tile = await this.getTile(relULTileX + offsetX, relULTileY + offsetY);
 
                 this.context.drawImage(tile,
                     this.tileSize - cropRectWidth, this.tileSize - cropRectHeight, // source (X, Y)

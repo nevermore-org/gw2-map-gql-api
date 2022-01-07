@@ -146,6 +146,6 @@ output/tiles/*
 
 tiles/*
 
-old.ts
+# Environment variables
 
 .env
